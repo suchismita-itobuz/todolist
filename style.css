@@ -1,5 +1,9 @@
-#plus-btn {
-  background-color: grey !important;
+body {
+  box-sizing: border-box;
+  height: 100vh;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
 }
 
 .form-box {
@@ -8,4 +12,22 @@
 
 .newTask {
   background-color: lightblue;
+}
+
+.delete-btn:hover {
+  cursor: pointer;
+}
+
+#tasks {
+  flex-grow: 1;
+  overflow-y: auto;
+}
+
+#button-group {
+  position: sticky;
+  bottom: 10px;
+}
+
+.del-btn, .tick-btn {
+  cursor: pointer;
 }/*# sourceMappingURL=style.css.map */
