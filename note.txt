@@ -1,0 +1,13 @@
+// const taskDivs = parentDiv.childNodes;
+    // const taskDiv = taskDivs[i];
+
+    // if(taskList[i].isCompleted === false){
+    //     // alert("if condition")
+    // taskList[i].isCompleted = true;   
+    // taskDiv.style.textDecoration = "line-through";
+    // }
+    // else{
+    //     taskList[i].isCompleted = false;
+    //     taskDiv.style.textDecoration = "none";
+
+    //     }
