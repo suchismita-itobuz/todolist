@@ -17,12 +17,46 @@ body{
 }
 #tasks{
     flex-grow: 1;
+    max-height:300px;
+    @media(min-width:1024px){
+    max-height: 500px;
+    }
     overflow-y: auto;
 }
 #button-group{
     position: sticky;
     bottom: 10px;
+    flex-wrap: wrap;
+    max-width: 100%;
+    padding-left: 20px;
+    padding-right: 20px;
+    
+}
+.btn-row{
+    gap: 5px;
 }
 .del-btn, .tick-btn{
 cursor: pointer;
+}
+.new-task{
+    overflow-x:auto;
+    overflow-y:auto;
+    height: 44px;
+    gap: 20px;
+   
+}
+.new-task::-webkit-scrollbar {
+    display: none;
+}
+
+.container{
+    @media(min-width:1024px){
+    width: 700px!important;
+    }
+}
+.title{
+    margin-top: 10%!important;
+}
+.DelAndClearBtn{
+    position: fixed;
 }
