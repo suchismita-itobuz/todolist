@@ -10,7 +10,16 @@ body {
   width: 600px;
 }
 
-.newTask {
+.user-new-task {
+  max-width: 85%;
+  overflow-x: auto;
+  max-height: 24px;
+}
+.user-new-task::-webkit-scrollbar {
+  display: none;
+}
+
+.new-task-body {
   background-color: lightblue;
 }
 
@@ -65,8 +74,4 @@ body {
 
 .title {
   margin-top: 10% !important;
-}
-
-.DelAndClearBtn {
-  position: fixed;
 }/*# sourceMappingURL=style.css.map */

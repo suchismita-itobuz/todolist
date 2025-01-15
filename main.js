@@ -15,6 +15,7 @@ function addTask() {
 
     if (taskInput.value === "") {
         alert("Please enter a value")
+        render();
         return;
     }
 
@@ -22,6 +23,7 @@ function addTask() {
         console.log(taskInput.value);
         if(taskList[i].content === taskInput.value){
             alert("Task already added")
+            render();
             return;
         }
     }
@@ -55,68 +57,6 @@ function isActiveTaskCompleted(i){
     activeTasks();
 }
 
-function activeTasks() {
-    parentDiv.innerHTML = ""; //clearing whole box
-
-    for (let i = 0; i < taskList.length; i++) {    //displaying array element in individuial boxes
-        if (taskList[i].isCompleted === false) {
-            const newTask = document.createElement("div");
-            const newContent = document.createTextNode(taskList[i].content);
-            newTask.appendChild(newContent);
-
-
-            newTask.style.backgroundColor = "#F0FEFF";  //styling individual boxes
-            newTask.style.fontSize = "1rem";
-            newTask.style.display = "inline-block";
-            newTask.style.borderRadius = "25px";
-            newTask.style.padding = "10px 20px";
-            newTask.style.marginBottom = '20px';
-            newTask.style.display = 'flex';
-            newTask.style.justifyContent = 'space-between'
-
-
-            const del = document.createElement("img");     //delete btn created
-            const completed = document.createElement("img"); //completed btn created
-
-            del.setAttribute("src", "./images/bin.png")
-            del.style.height = "20px";
-            del.classList.add("del-btn");
-            
-            //delete task functionality added to be performed ON CLICK
-           
-            del.setAttribute("onclick", `delActiveTask('${i}')`);
-
-
-            completed.setAttribute("src", "./images/check.png");
-            completed.style.height = "20px";
-            completed.classList.add("tick-btn");
-
-
-            completed.setAttribute("onclick", `isActiveTaskCompleted('${i}')`)    //completed task functionality added to be performed ON CLICK
-            if (taskList[i].isCompleted) {
-                newTask.style.textDecoration = "line-through"
-            } else {
-                newTask.style.textDecoration = "none"
-            }
-
-
-            const buttons = document.createElement('div'); //buttons are created
-
-            newTask.appendChild(buttons);
-            buttons.style.display = "flex";
-            buttons.style.gap = '20px'
-            buttons.appendChild(del);
-            buttons.appendChild(completed);
-
-
-            parentDiv.appendChild(newTask);
-
-
-            taskInput.value = ""; //input box cleared
-        }
-    }
-
-}
 function delCompletedTask(i) {
     taskList.splice(i, 1);
     CompletedTasks();
@@ -132,27 +72,29 @@ function CompletedTasks() {
 
     for (let i = 0; i < taskList.length; i++) {    //displaying array element in individuial boxes
         if (taskList[i].isCompleted === true) {
-            const newTask = document.createElement("div");
-            const newContent = document.createTextNode(taskList[i].content);
-            newTask.appendChild(newContent);
+            const newTaskBody = document.createElement("div");
+        const newTask = document.createElement("div");
+        newTaskBody.appendChild(newTask);
+        const newContent = document.createTextNode(taskList[i].content);
+        newTask.appendChild(newContent);
+        newTaskBody.classList.add("new-task-body");
+        newTask.classList.add("user-new-task")
+
+        newTaskBody.style.borderRadius = "25px";
+        newTaskBody.style.backgroundColor = "#F0FEFF";  //styling individual body of new tasks
+        newTaskBody.style.padding = "10px 20px";
+        newTaskBody.style.marginBottom = '20px';
+        newTaskBody.style.fontSize = "1rem";
+        newTaskBody.style.display = 'flex';
+        newTaskBody.style.justifyContent = 'space-between'
 
 
-            newTask.style.backgroundColor = "#F0FEFF";  //styling individual boxes
-            newTask.style.fontSize = "1rem";
-            newTask.style.display = "inline-block";
-            newTask.style.borderRadius = "25px";
-            newTask.style.padding = "10px 20px";
-            newTask.style.marginBottom = '20px';
-            newTask.style.display = 'flex';
-            newTask.style.justifyContent = 'space-between'
+        const del = document.createElement("img");     //delete btn created
+        const completed = document.createElement("img"); //completed btn created
 
-
-            const del = document.createElement("img");     //delete btn created
-            const completed = document.createElement("img"); //completed btn created
-
-            del.setAttribute("src", "./images/bin.png")
-            del.style.height = "20px";
-            del.classList.add("del-btn");
+        del.setAttribute("src", "./images/bin.png")
+        del.style.height = "20px";
+        del.classList.add("del-btn");
             
             //delete task functionality added to be performed ON CLICK
            
@@ -173,16 +115,14 @@ function CompletedTasks() {
 
 
             const buttons = document.createElement('div'); //buttons are created
-            buttons.classList.add("DelAndClearBtn")
-            newTask.appendChild(buttons);
+            newTaskBody.appendChild(buttons);
             buttons.style.display = "flex";
             buttons.style.gap = '20px'
             buttons.appendChild(del);
             buttons.appendChild(completed);
 
 
-            parentDiv.appendChild(newTask);
-
+            parentDiv.appendChild(newTaskBody);
 
             taskInput.value = ""; //input box cleared
         }
@@ -196,27 +136,29 @@ function activeTasks() {
 
     for (let i = 0; i < taskList.length; i++) {    //displaying array element in individuial boxes
         if (taskList[i].isCompleted === false) {
-            const newTask = document.createElement("div");
-            const newContent = document.createTextNode(taskList[i].content);
-            newTask.appendChild(newContent);
+            const newTaskBody = document.createElement("div");
+        const newTask = document.createElement("div");
+        newTaskBody.appendChild(newTask);
+        const newContent = document.createTextNode(taskList[i].content);
+        newTask.appendChild(newContent);
+        newTaskBody.classList.add("new-task-body");
+        newTask.classList.add("user-new-task")
+
+        newTaskBody.style.borderRadius = "25px";
+        newTaskBody.style.backgroundColor = "#F0FEFF";  //styling individual body of new tasks
+        newTaskBody.style.padding = "10px 20px";
+        newTaskBody.style.marginBottom = '20px';
+        newTaskBody.style.fontSize = "1rem";
+        newTaskBody.style.display = 'flex';
+        newTaskBody.style.justifyContent = 'space-between'
 
 
-            newTask.style.backgroundColor = "#F0FEFF";  //styling individual boxes
-            newTask.style.fontSize = "1rem";
-            newTask.style.display = "inline-block";
-            newTask.style.borderRadius = "25px";
-            newTask.style.padding = "10px 20px";
-            newTask.style.marginBottom = '20px';
-            newTask.style.display = 'flex';
-            newTask.style.justifyContent = 'space-between'
+        const del = document.createElement("img");     //delete btn created
+        const completed = document.createElement("img"); //completed btn created
 
-
-            const del = document.createElement("img");     //delete btn created
-            const completed = document.createElement("img"); //completed btn created
-
-            del.setAttribute("src", "./images/bin.png")
-            del.style.height = "20px";
-            del.classList.add("del-btn");
+        del.setAttribute("src", "./images/bin.png")
+        del.style.height = "20px";
+        del.classList.add("del-btn");
             
             //delete task functionality added to be performed ON CLICK
            
@@ -238,14 +180,14 @@ function activeTasks() {
 
             const buttons = document.createElement('div'); //buttons are created
 
-            newTask.appendChild(buttons);
+            newTaskBody.appendChild(buttons);
             buttons.style.display = "flex";
             buttons.style.gap = '20px'
             buttons.appendChild(del);
             buttons.appendChild(completed);
 
 
-            parentDiv.appendChild(newTask);
+            parentDiv.appendChild(newTaskBody);
 
 
             taskInput.value = ""; //input box cleared
@@ -258,18 +200,21 @@ function render() {
     parentDiv.innerHTML = ""; //clearing whole box
 
     for (let i = 0; i < taskList.length; i++) {    //displaying array element in individuial boxes
+        const newTaskBody = document.createElement("div");
         const newTask = document.createElement("div");
+        newTaskBody.appendChild(newTask);
         const newContent = document.createTextNode(taskList[i].content);
         newTask.appendChild(newContent);
-        newTask.classList.add("new-task");
+        newTaskBody.classList.add("new-task-body");
+        newTask.classList.add("user-new-task")
 
-        newTask.style.backgroundColor = "#F0FEFF";  //styling individual boxes
-        newTask.style.fontSize = "1rem";
-        newTask.style.borderRadius = "25px";
-        newTask.style.padding = "10px 20px";
-        newTask.style.marginBottom = '20px';
-        newTask.style.display = 'flex';
-        newTask.style.justifyContent = 'space-between'
+        newTaskBody.style.borderRadius = "25px";
+        newTaskBody.style.backgroundColor = "#F0FEFF";  //styling individual body of new tasks
+        newTaskBody.style.padding = "10px 20px";
+        newTaskBody.style.marginBottom = '20px';
+        newTaskBody.style.fontSize = "1rem";
+        newTaskBody.style.display = 'flex';
+        newTaskBody.style.justifyContent = 'space-between'
 
 
         const del = document.createElement("img");     //delete btn created
@@ -298,14 +243,14 @@ function render() {
 
         const buttons = document.createElement('div'); //buttons are created
 
-        newTask.appendChild(buttons);
+        newTaskBody.appendChild(buttons);
         buttons.style.display = "flex";
         buttons.style.gap = '20px'
         buttons.appendChild(del);
         buttons.appendChild(completed);
 
 
-        parentDiv.appendChild(newTask);
+        parentDiv.appendChild(newTaskBody);
 
 
         taskInput.value = ""; //input box cleared

@@ -8,8 +8,15 @@ body{
 .form-box{
     width: 600px;
 }
-
-.newTask{
+.user-new-task{
+    max-width: 85%;
+    overflow-x: auto;
+    max-height: 24px;
+    &::-webkit-scrollbar{
+        display: none;
+    }
+}
+.new-task-body{
     background-color: lightblue;
 }
 .delete-btn:hover{
@@ -56,7 +63,4 @@ cursor: pointer;
 }
 .title{
     margin-top: 10%!important;
-}
-.DelAndClearBtn{
-    position: fixed;
 }

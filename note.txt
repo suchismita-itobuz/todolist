@@ -1,13 +1,62 @@
-// const taskDivs = parentDiv.childNodes;
-    // const taskDiv = taskDivs[i];
+function render() {
+    parentDiv.innerHTML = ""; //clearing whole box
 
-    // if(taskList[i].isCompleted === false){
-    //     // alert("if condition")
-    // taskList[i].isCompleted = true;   
-    // taskDiv.style.textDecoration = "line-through";
-    // }
-    // else{
-    //     taskList[i].isCompleted = false;
-    //     taskDiv.style.textDecoration = "none";
+    for (let i = 0; i < taskList.length; i++) {    //displaying array element in individuial boxes
+        const newTaskBody = document.createElement("div");
+        const newTask = document.createElement("div");
+        newTaskBody.appendChild(newTask);
+        const newContent = document.createTextNode(taskList[i].content);
+        newTask.appendChild(newContent);
+        newTaskBody.classList.add("new-task-body");
+        newTask.classList.add("user-new-task")
 
-    //     }
+        newTaskBody.style.borderRadius = "25px";
+        newTaskBody.style.backgroundColor = "#F0FEFF";  //styling individual body of new tasks
+        newTaskBody.style.padding = "10px 20px";
+        newTaskBody.style.marginBottom = '20px';
+        newTaskBody.style.fontSize = "1rem";
+        newTaskBody.style.display = 'flex';
+        newTaskBody.style.justifyContent = 'space-between'
+
+
+        const del = document.createElement("img");     //delete btn created
+        const completed = document.createElement("img"); //completed btn created
+
+        del.setAttribute("src", "./images/bin.png")
+        del.style.height = "20px";
+        del.classList.add("del-btn");
+
+        del.setAttribute("onclick", `delTask('${i}')`); //delete task functionality added to be performed ON CLICK
+
+
+
+
+        completed.setAttribute("src", "./images/check.png");
+        completed.style.height = "20px";
+        completed.classList.add("tick-btn");
+
+        completed.setAttribute("onclick", `isTaskCompleted('${i}')`)    //completed task functionality added to be performed ON CLICK
+        if (taskList[i].isCompleted) {
+            newTask.style.textDecoration = "line-through"
+        } else {
+            newTask.style.textDecoration = "none"
+        }
+
+
+        const buttons = document.createElement('div'); //buttons are created
+
+        newTaskBody.appendChild(buttons);
+        buttons.style.display = "flex";
+        buttons.style.gap = '20px'
+        buttons.appendChild(del);
+        buttons.appendChild(completed);
+
+
+        parentDiv.appendChild(newTaskBody);
+
+
+        taskInput.value = ""; //input box cleared
+
+
+    }
+}
